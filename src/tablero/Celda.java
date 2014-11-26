@@ -10,6 +10,7 @@ public class Celda {
 	
 	private Lock lock = new ReentrantLock();
 	private Condition ocupado = lock.newCondition();
+	private Condition puedeMoverAdelante = lock.newCondition();
 	private Coordenada coord;
 	private boolean estaLibre;
 	private Ocupante ocupante;
@@ -38,8 +39,31 @@ public class Celda {
 	public boolean esBorde() {
 		return this.coord.esBorde();
 	}
+	
+	public void ocuparCasilleroAdelante(Ocupante ocupante) {
+		lock.lock();
+		
+		while(!this.estaLibre && !hayParticipantesEnLindantes()) {
+			try {
+				this.puedeMoverAdelante.await();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				this.ocupado.await();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		this.ocupante = ocupante;
+		
+		lock.unlock();
+	}
 
-	public void ocuparCasillero(Ocupante ocupante){
+	public void ocuparCasilleroLateral(Ocupante ocupante){
 		lock.lock();
 		
 		while(!this.estaLibre)
@@ -59,5 +83,11 @@ public class Celda {
 		this.estaLibre = true;
 
 		this.ocupado.signal();
+		
+		this.puedeMoverAdelante.signalAll();
+	}
+	
+	public boolean hayParticipantesEnLindantes() {
+		return false;
 	}
 }
