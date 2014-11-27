@@ -1,9 +1,12 @@
 package ocupantes;
 
 import tablero.Celda;
+import tablero.Derecha;
+import tablero.Tablero;
 
 public class EquipoNorte extends Equipo {
 
+	/*
 	@Override
 	public int posEnXIzq(Celda celda) {
 		return celda.getCoord().getX() + 1;
@@ -32,5 +35,22 @@ public class EquipoNorte extends Equipo {
 	@Override
 	public int posEnYAdelante(Celda celda) {
 		return celda.getCoord().getY() - 1;
+	}
+
+	*/
+	
+	@Override
+	public Celda celdaAIzq(Tablero tablero, Celda celda) {
+		return tablero.buscarCeldaEnPosicion(new Derecha(), celda);
+	}
+
+	@Override
+	public Celda celdaADer(Tablero tablero, Celda celda) {
+		return tablero.buscarCeldaEnPosicion(new Izquierda(), celda);
+	}
+
+	@Override
+	public Celda celdaAdelante(Tablero tablero, Celda celda) {
+		return tablero.buscarCeldaEnPosicion(new Atras(), celda);
 	}
 }

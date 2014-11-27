@@ -5,10 +5,13 @@ import tablero.Tablero;
 
 public abstract class Equipo {
 
-	public Celda celdaAIzq(Tablero tablero, Celda celda) {
+	/*public Celda celdaAIzq(Tablero tablero, Celda celda) 
+	{
+		//return tablero.buscarCeldaEnPosicion()
 		return tablero.buscarCelda(this.posEnXIzq(celda), this.posEnYIzq(celda));
 	}
-
+	
+	
 	public Celda celdaADer(Tablero tablero, Celda celda) {
 		return tablero.buscarCelda(this.posEnXDer(celda), this.posEnYDer(celda));	
 	}
@@ -16,6 +19,7 @@ public abstract class Equipo {
 	public Celda celdaAdelante(Tablero tablero, Celda celda) {
 		return tablero.buscarCelda(this.posEnXAdelante(celda), this.posEnYAdelante(celda));
 	}
+	
 	
 	public abstract int posEnXIzq(Celda celda);
 	
@@ -28,4 +32,13 @@ public abstract class Equipo {
 	public abstract int posEnXAdelante(Celda celda);
 	
 	public abstract int posEnYAdelante(Celda celda);
+	
+	*/
+	
+	public abstract Celda celdaAIzq(Tablero tablero, Celda celda);
+	public abstract Celda celdaADer(Tablero tablero, Celda celda);
+	public abstract Celda celdaAdelante(Tablero tablero, Celda celda);
+	
+	
+	
 }

@@ -55,4 +55,8 @@ public class Tablero {
 			x++;
 		}
 	}
+
+	public Celda buscarCeldaEnPosicion(Posicion unaPosicion, Celda celda) {
+		return  unaPosicion.celdaProximaDe(celda);
+	}
 }

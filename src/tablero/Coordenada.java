@@ -36,4 +36,20 @@ public class Coordenada {
 				(this.x == DimensionTablero.TAMANIO - 1 || 
 				this.y == DimensionTablero.TAMANIO - 1);
 	}
+
+	public Coordenada deLaDerecha() {
+		return new Coordenada(this.x + 1, this.y);
+	}
+
+	public Coordenada deLaIzquierda() {
+		return new Coordenada(this.x - 1, this.y);
+	}
+
+	public Coordenada deAdelante() {
+		return new Coordenada(this.x, this.y + 1);
+	}
+	
+	public Coordenada deAtras() {
+		return new Coordenada(this.x, this.y - 1);
+	}
 }
