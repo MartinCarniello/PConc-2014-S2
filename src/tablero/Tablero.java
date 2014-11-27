@@ -24,7 +24,6 @@ public class Tablero {
 		
 		this.tesorosNorte = cantTesoros;
 		this.tesorosSur = cantTesoros;
-		
 		this.generarParticipantes(cantParticipantes);
 	}
 	
@@ -57,6 +56,6 @@ public class Tablero {
 	}
 
 	public Celda buscarCeldaEnPosicion(Posicion unaPosicion, Celda celda) {
-		return  unaPosicion.celdaProximaDe(celda);
+		return this.tablero.get(unaPosicion.celdaProximaDe(celda).toString());
 	}
 }

@@ -18,6 +18,11 @@ public class Celda {
 	public Coordenada getCoord() {
 		return coord;
 	}
+	
+	@Override
+	public String toString(){
+		return this.coord.toString();
+	}
 
 	public void setCoord(Coordenada coord) {
 		this.coord = coord;
@@ -47,13 +52,11 @@ public class Celda {
 			try {
 				this.puedeMoverAdelante.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			try {
 				this.ocupado.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -70,7 +73,6 @@ public class Celda {
 			try {
 				this.ocupado.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -81,9 +83,7 @@ public class Celda {
 
 	public void liberarCasillero(){
 		this.estaLibre = true;
-
-		this.ocupado.signal();
-		
+		this.ocupado.signal();		
 		this.puedeMoverAdelante.signalAll();
 	}
 	

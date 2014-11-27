@@ -38,7 +38,4 @@ public abstract class Equipo {
 	public abstract Celda celdaAIzq(Tablero tablero, Celda celda);
 	public abstract Celda celdaADer(Tablero tablero, Celda celda);
 	public abstract Celda celdaAdelante(Tablero tablero, Celda celda);
-	
-	
-	
 }
